@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Timer Directive</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"></link>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="underscore.js"></script>
+	<script type="text/javascript" src="javascript.js"></script>
+	<style type="text/css">
+		.table{
+			top:225px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body ng-app="filterapp">
+	<div style="width: 21%; margin: 0 auto;" ng-controller="filtercontroller">
+		<ul class="inline">
+			<div class="btn-group" data-ng-class="{open: open}">
+				<button class="btn" ng-bind="filter"/>
+	            <button class="btn dropdown-toggle" style="height: 30px;"data-ng-click="open=!open"><span class="caret"></span>
+	           	</button>
+	            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+	            	<li ng-repeat="filter in set1Filters track by filter.id">
+	                	<a data-ng-click="setFilter(filter.name)"><i data-ng-class="{'icon-ok-sign' : filter.isChecked}"></i> {{::filter.name}}</a>
+	                </li>
+	                <li class="divider"></li>
+					<li ng-repeat="filter in set2Filters track by filter.id">
+	                	<a data-ng-click="setFilter(filter.name)"><i data-ng-class="{'icon-ok-sign' : filter.isChecked}"></i>  {{::filter.name}}</a>
+	                </li>
+	            </ul>
+        	</div>
+		</ul>
+		
+		<div class="table">
+			<table border='1'>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>IsResolved</th>
+					<th>IsChronic</th>
+					<th>IsSmoke</th>
+					<th>Age</th>
+				</tr>
+				<tr ng-repeat="person in persons track by person.id" person-details></tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
